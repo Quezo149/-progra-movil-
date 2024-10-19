@@ -1,0 +1,58 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Inicio De Sesión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- Estructura del formulario -->
+  <form (ngSubmit)="login()">
+    <!-- Email -->
+    <ion-item>
+      <ion-label position="floating">Correo</ion-label>
+      <ion-input type="email" [(ngModel)]="email" name="email" required></ion-input>
+    </ion-item>
+
+    <!-- Contraseña -->
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="pass" name="pass" required></ion-input>
+    </ion-item>
+    
+    <!-- Tipo de Usuario (Alumno/Profesor) -->
+    <ion-list>
+      <ion-radio-group [(ngModel)]="userType" name="userType">
+        <ion-list-header>
+          <ion-label>Tipo de Usuario</ion-label>
+        </ion-list-header>
+
+        <ion-item>
+          <ion-radio slot="start" value="Alumno"></ion-radio>
+          <ion-label>Alumno</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-radio slot="start" value="Profesor"></ion-radio>
+          <ion-label>Profesor</ion-label>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+
+    <!-- Botón de enviar -->
+    <ion-button expand="half" type="submit">Iniciar Sesión</ion-button>
+    
+    <!-- Separación -->
+    <div style="height: 10px;"></div>
+
+    <!-- Mensaje de error -->
+    <ion-text color="danger" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </ion-text>
+    
+    <!-- Separación -->
+    <div style="height: 10px;"></div>
+    
+    <!-- Botón para ir a recuperar contraseña -->
+    <ion-button expand="half" color="primary" (click)="goToForgotPass()">¿Olvidaste tu contraseña?</ion-button>
+  </form>
+</ion-content>

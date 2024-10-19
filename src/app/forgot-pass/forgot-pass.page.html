@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <ion-button (click)="goBack()"><</ion-button>
+      Cambiar Contraseña
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- Formulario para cambiar contraseña -->
+  <form (ngSubmit)="changePassword()">
+    
+    <!-- Correo -->
+    <ion-item>
+      <ion-label position="floating">Correo</ion-label>
+      <ion-input type="email" [(ngModel)]="email" name="email" required></ion-input>
+    </ion-item>
+
+    <!-- Nueva Contraseña -->
+    <ion-item>
+      <ion-label position="floating">Nueva Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="newPass" name="newPass" required></ion-input>
+    </ion-item>
+
+    <!-- Confirmar Contraseña -->
+    <ion-item>
+      <ion-label position="floating">Confirmar Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="confirmPass" name="confirmPass" required></ion-input>
+    </ion-item>
+
+    <!-- Botón para cambiar contraseña -->
+    <ion-button expand="half" type="submit">Cambiar Contraseña</ion-button>
+
+    <!-- Separación -->
+    <div style="height: 10px;"></div>
+
+    <!-- Mensaje de error -->
+    <ion-text color="danger" *ngIf="errorMessage">{{ errorMessage }}</ion-text>
+
+    <!-- Mensaje de éxito -->
+    <ion-text color="success" *ngIf="successMessage">{{ successMessage }}</ion-text>
+
+  </form>
+</ion-content>
+
